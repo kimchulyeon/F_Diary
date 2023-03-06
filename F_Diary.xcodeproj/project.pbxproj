@@ -13,6 +13,11 @@
 		6E99BAC829B5C5F8000C05C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E99BAC629B5C5F8000C05C6 /* Main.storyboard */; };
 		6E99BACA29B5C5F9000C05C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E99BAC929B5C5F9000C05C6 /* Assets.xcassets */; };
 		6E99BACD29B5C5F9000C05C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E99BACB29B5C5F9000C05C6 /* LaunchScreen.storyboard */; };
+		6E99BAD529B5CFD9000C05C6 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99BAD429B5CFD9000C05C6 /* DiaryCell.swift */; };
+		6E99BAD729B5D02D000C05C6 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99BAD629B5D02D000C05C6 /* StarViewController.swift */; };
+		6E99BAD929B5D130000C05C6 /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99BAD829B5D130000C05C6 /* StarCell.swift */; };
+		6E99BADB29B5D2C6000C05C6 /* AddDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99BADA29B5D2C6000C05C6 /* AddDiaryViewController.swift */; };
+		6E99BADD29B5D313000C05C6 /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99BADC29B5D313000C05C6 /* DiaryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		6E99BAC929B5C5F9000C05C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E99BACC29B5C5F9000C05C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E99BACE29B5C5F9000C05C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E99BAD429B5CFD9000C05C6 /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		6E99BAD629B5D02D000C05C6 /* StarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
+		6E99BAD829B5D130000C05C6 /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
+		6E99BADA29B5D2C6000C05C6 /* AddDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
+		6E99BADC29B5D313000C05C6 /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,11 @@
 				6E99BAC929B5C5F9000C05C6 /* Assets.xcassets */,
 				6E99BACB29B5C5F9000C05C6 /* LaunchScreen.storyboard */,
 				6E99BACE29B5C5F9000C05C6 /* Info.plist */,
+				6E99BAD429B5CFD9000C05C6 /* DiaryCell.swift */,
+				6E99BAD629B5D02D000C05C6 /* StarViewController.swift */,
+				6E99BAD829B5D130000C05C6 /* StarCell.swift */,
+				6E99BADA29B5D2C6000C05C6 /* AddDiaryViewController.swift */,
+				6E99BADC29B5D313000C05C6 /* DiaryDetailViewController.swift */,
 			);
 			path = F_Diary;
 			sourceTree = "<group>";
@@ -138,9 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E99BAD729B5D02D000C05C6 /* StarViewController.swift in Sources */,
+				6E99BAD929B5D130000C05C6 /* StarCell.swift in Sources */,
+				6E99BADB29B5D2C6000C05C6 /* AddDiaryViewController.swift in Sources */,
 				6E99BAC529B5C5F8000C05C6 /* ViewController.swift in Sources */,
 				6E99BAC129B5C5F8000C05C6 /* AppDelegate.swift in Sources */,
+				6E99BADD29B5D313000C05C6 /* DiaryDetailViewController.swift in Sources */,
 				6E99BAC329B5C5F8000C05C6 /* SceneDelegate.swift in Sources */,
+				6E99BAD529B5CFD9000C05C6 /* DiaryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
