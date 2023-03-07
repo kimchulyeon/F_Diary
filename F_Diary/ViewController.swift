@@ -24,7 +24,8 @@ class ViewController: UIViewController {
 
 		self.configureCollectionView()
 		self.loadDiaryList()
-
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(editDiaryNotification(_:)), name: NSNotification.Name("editDiary"), object: nil)
 	}
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		guard let addDiaryVC = segue.destination as? AddDiaryViewController else { return }
@@ -71,20 +72,50 @@ class ViewController: UIViewController {
 			$0.date.compare($1.date) == .orderedDescending
 		})
 	}
+	
+	//MARK: - selector ==================
+	@objc func editDiaryNotification(_ notification: Notification) {
+		guard let diary = notification.object as? Diary else { return }
+		guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+		
+		self.diaryList[row] = diary
+		self.diaryList = self.diaryList.sorted(by: {
+			$0.date.compare($1.date) == .orderedDescending
+		})
+		self.collectionView.reloadData()
+	}
 }
 
 //MARK: - AddDiaryViewDelegate
 extension ViewController: AddDiaryViewDelegate {
 	func didSelectAdd(diary: Diary) {
 		self.diaryList.append(diary)
+		self.diaryList = self.diaryList.sorted(by: {
+			$0.date.compare($1.date) == .orderedDescending
+		})
 		self.collectionView.reloadData()
 	}
 }
 
-//MARK: - UICollectionViewDelegate
+//MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: (UIScreen.main.bounds.width / 2) - 20, height: 200)
+	}
+}
+
+//MARK: - UICollectionViewDelegate ==================
+extension ViewController: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let vc = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
+		
+		vc.delegate = self
+		
+		let diary = self.diaryList[indexPath.row]
+		vc.diary = diary
+		vc.indexPath = indexPath
+
+		self.navigationController?.pushViewController(vc, animated: true)
 	}
 }
 
@@ -100,5 +131,14 @@ extension ViewController: UICollectionViewDataSource {
 		cell.titleLabel.text = diary.title
 		cell.dateLabel.text = self.dateToString(date: diary.date)
 		return cell
+	}
+}
+
+//MARK: - DiaryDetailViewDelegate ==================
+extension ViewController: DiaryDetailViewDelegate {
+	func didSelectDelete(indexPath: IndexPath) {
+		self.diaryList.remove(at: indexPath.row)
+		self.collectionView.deleteItems(at: [indexPath])
+		//self.collectionView.reloadData()
 	}
 }

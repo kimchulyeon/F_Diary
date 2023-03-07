@@ -370,6 +370,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정"/>
+                                        <connections>
+                                            <action selector="tapEditButton:" destination="6bY-bh-JuX" eventType="touchUpInside" id="4wG-Qe-Aw7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-ZS-xoC">
                                         <rect key="frame" x="103.5" y="0.0" width="53.5" height="34.5"/>
@@ -377,6 +380,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="삭제">
                                             <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tapDeleteButton:" destination="6bY-bh-JuX" eventType="touchUpInside" id="Nz8-E4-1PP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -400,10 +406,15 @@
                             <constraint firstItem="UHY-H1-Wfw" firstAttribute="top" secondItem="k0G-Ld-34M" secondAttribute="bottom" constant="24" id="yaa-m1-swz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="D4T-Zq-ana" id="TcP-th-jGu"/>
+                        <outlet property="dateLabel" destination="HXF-Y6-aKZ" id="KmX-gC-q99"/>
+                        <outlet property="titleLabel" destination="mRe-bK-tJA" id="vkQ-1e-3lK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35u-s7-IB0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797" y="-52"/>
+            <point key="canvasLocation" x="999" y="-90"/>
         </scene>
     </scenes>
     <resources>
