@@ -20,11 +20,7 @@ class AddDiaryViewController: UIViewController {
 
 	//MARK: - properties ============================================
 	@IBOutlet weak var titleTextField: UITextField!
-	@IBOutlet weak var contentsTextView: UITextView! {
-		didSet {
-			contentsTextView.delegate = self
-		}
-	}
+	@IBOutlet weak var contentsTextView: UITextView!
 	@IBOutlet weak var dateTextField: UITextField!
 	@IBOutlet weak var addButton: UIBarButtonItem!
 	
@@ -53,6 +49,7 @@ class AddDiaryViewController: UIViewController {
 	//MARK: - func ============================================
 	/// contentsTextView 테투리선
 	private func configureContentsTextView() {
+		self.contentsTextView.delegate = self
 		self.contentsTextView.layer.borderColor = UIColor(red: 180/225, green: 180/225, blue: 180/225, alpha: 1.0).cgColor
 		self.contentsTextView.layer.borderWidth = 0.5
 		self.contentsTextView.layer.cornerRadius = 5.0
@@ -115,13 +112,14 @@ class AddDiaryViewController: UIViewController {
 		guard let title = self.titleTextField.text else { return }
 		guard let contents = self.contentsTextView.text else { return }
 		guard let date = self.diaryDate else { return }
-		let newDiary = Diary(title: title, contents: contents, date: date, isStar: false)
 		
 		switch self.diaryEditorMode {
 		case .new: // 새로 생성모드
+			let newDiary = Diary(uuidString: UUID().uuidString ,title: title, contents: contents, date: date, isStar: false)
 			self.delegate?.didSelectAdd(diary: newDiary)
-		case let .edit(indextPath, _): // 편집모드
-			NotificationCenter.default.post(name: NSNotification.Name("editDiary"), object: newDiary, userInfo: ["indexPath.row": indextPath.row])
+		case let .edit(_, diary): // 편집모드
+			let newDiary = Diary(uuidString: diary.uuidString, title: title, contents: contents, date: date, isStar: diary.isStar)
+			NotificationCenter.default.post(name: NSNotification.Name("editDiary"), object: newDiary, userInfo: nil)
 		}
 		
 		self.navigationController?.popViewController(animated: true)
